@@ -36,4 +36,18 @@ describe('reorder', () => {
     reorder(items, ['a', 'b', 'c'], 'a', 'c');
     expect(items).toEqual(snapshot);
   });
+
+  test('supports numeric ids (INDEX fallback path)', () => {
+    const nums = [{ id: 'x' }, { id: 'y' }, { id: 'z' }];
+    expect(reorder(nums, [0, 1, 2], 2, 0)).toEqual([
+      { id: 'z' },
+      { id: 'x' },
+      { id: 'y' },
+    ]);
+  });
+
+  test('returns a new array reference', () => {
+    const result = reorder(items, ['a', 'b', 'c'], 'a', 'c');
+    expect(result).not.toBe(items);
+  });
 });
