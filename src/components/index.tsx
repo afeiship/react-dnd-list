@@ -58,8 +58,9 @@ export function reorder<T>(
 
 type SortableRowProps<T> = {
   id: UniqueIdentifier;
+  item: T;
   index: number;
-  value: T[];
+  data: T[];
   slot: Slot<SortableItemContext<T>>;
   handleOnly: boolean;
   disabled: boolean;
@@ -68,8 +69,9 @@ type SortableRowProps<T> = {
 
 function SortableRow<T>({
   id,
+  item,
   index,
-  value,
+  data,
   slot,
   handleOnly,
   disabled,
@@ -85,6 +87,8 @@ function SortableRow<T>({
     isDragging,
   } = useSortable({ id, disabled });
 
+  // Cast: dnd-kit `attributes` (role: string) conflicts with Partial<SyntheticListenerMap>
+  // (Record<string, Function> index signature) under TS 4.9 — TS2322. Type-only.
   const dragHandleProps: DragHandleProps = handleOnly
     ? ({ ...attributes, ...listeners, ref: setActivatorNodeRef } as DragHandleProps)
     : { ref: setActivatorNodeRef };
@@ -110,9 +114,9 @@ function SortableRow<T>({
       {renderSlot<SortableItemContext<T>>(
         slot,
         {
-          item: value[index],
+          item,
           index,
-          data: value,
+          data,
           dragHandleProps,
           isDragging,
         },
@@ -169,9 +173,10 @@ function ReactDndList<T>(props: ReactDndListProps<T>) {
 
   const itemSlot: Slot<SortableItemContext<T>> = (ctx) => (
     <SortableRow
-      id={getKey(ctx.item, ctx.index, ctx.data, extractor)}
+      id={ids[ctx.index]}
+      item={ctx.item}
       index={ctx.index}
-      value={ctx.data}
+      data={ctx.data}
       slot={slots.item}
       handleOnly={handleOnly}
       disabled={disabled}
@@ -186,6 +191,8 @@ function ReactDndList<T>(props: ReactDndListProps<T>) {
     value.length === 0 && classNames?.empty
   );
 
+  // Cast: react-list's ReactList returns React.ReactNode, which TS < 5.1 rejects as a
+  // JSX component type (TS2786). Props stay fully checked via ReactListProps<T>.
   const List = ReactList as React.ComponentType<ReactListProps<T>>;
 
   if (value.length === 0) {
