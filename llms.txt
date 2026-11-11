@@ -1,0 +1,103 @@
+# react-dnd-list
+
+> A controlled, accessible sortable list component for React, built on dnd-kit and @jswork/react-list.
+
+## Overview
+
+ReactDndList wraps `DndContext` + `SortableContext` (dnd-kit) around `@jswork/react-list`'s headless slot renderer. It calls `onChange(nextArray, dragEndEvent)` after a drop; it never mutates `value`.
+
+## Important notes for agents
+
+- Package: `@jswork/react-dnd-list`
+- Main file: `src/components/index.tsx`; types: `src/components/types.ts`; entry: `src/main.ts`
+- Peer deps: `react >=18`, `react-dom >=18`
+- Dependencies: `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities`, `@jswork/react-list`, `classnames`, `@jswork/noop`
+- Re-exports `SELF` and `INDEX` from `@jswork/react-list` — do not make consumers install react-list separately
+- `keyExtractor` is shared by React keys and `SortableContext items`; ids must be unique
+- No `DragOverlay`; the row wrapper itself transforms while dragging
+- Empty list renders only the root container (plus `slots.empty`); no DndContext is created
+
+## API
+
+```ts
+interface ReactDndListProps<T> {
+  value: T[];
+  onChange?: (next: T[], event: DragEndEvent) => void; // default noop
+  keyExtractor?: KeyExtractor<T>;                      // default 'id'
+  slots: {
+    item: Slot<SortableItemContext<T>>;
+    empty?: Slot<{ data: T[] }>;
+  };
+  handleOnly?: boolean;       // default false
+  direction?: 'vertical' | 'horizontal'; // default 'vertical'
+  disabled?: boolean;         // default false
+  className?: string;
+  classNames?: { root?: string; item?: string; dragging?: string; empty?: string };
+  dndContextProps?: DndContextProps;
+  sortableContextProps?: Omit<SortableContextProps, 'items' | 'children'>;
+}
+```
+
+`SortableItemContext<T>` = `ItemContext<T>` (`item`, `index`, `data`) plus `dragHandleProps` and `isDragging`.
+
+## Usage
+
+```tsx
+import { useState } from 'react';
+import ReactDndList from '@jswork/react-dnd-list';
+
+const [items, setItems] = useState([
+  { id: 'a', name: 'Alice' },
+  { id: 'b', name: 'Bob' },
+]);
+
+<ReactDndList
+  value={items}
+  onChange={setItems}
+  handleOnly
+  slots={{
+    item: ({ item, dragHandleProps }) => (
+      <>
+        <button {...dragHandleProps}>⠿</button>
+        <span>{item.name}</span>
+      </>
+    ),
+    empty: () => <p>No data</p>,
+  }}
+/>;
+```
+
+## Hard constraints
+
+1. When `handleOnly` is true, `dragHandleProps` MUST be spread onto a rendered element inside the item slot. Otherwise the list cannot be dragged.
+2. When `handleOnly` is false (default), listeners are on the row wrapper; `dragHandleProps.ref` is still provided for keyboard activation.
+3. `dndContextProps.onDragEnd` is forwarded BEFORE internal reordering; the internal handler always owns `onChange`.
+4. `sortableContextProps.strategy` overrides the `direction` shortcut; `items` can never be overridden.
+5. `disabled` suppresses `onChange` entirely.
+
+## Escape hatches
+
+```tsx
+<ReactDndList
+  value={items}
+  onChange={setItems}
+  dndContextProps={{ collisionDetection: pointerWithin, modifiers: [restrictToVerticalAxis] }}
+  sortableContextProps={{ strategy: horizontalListSortingStrategy }}
+  slots={...}
+/>
+```
+
+## Files
+
+```
+src/main.ts               entry, re-exports SELF/INDEX
+src/components/index.tsx  ReactDndList + private SortableRow + reorder
+src/components/types.ts   public types
+src/components/style.scss minimal reset
+public/src/app.tsx        live demo
+__tests__/                 jest + testing-library tests
+```
+
+## License
+
+MIT
