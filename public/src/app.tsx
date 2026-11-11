@@ -12,6 +12,7 @@ const initialItems: Item[] = [
 export default function App() {
   const [items, setItems] = useState(initialItems);
   const [handleOnly, setHandleOnly] = useState(true);
+  const [fruits, setFruits] = useState(['apple', 'banana', 'cherry']);
 
   return (
     <div className="p-5 w-4/5 mx-auto mt-10">
@@ -77,11 +78,11 @@ export default function App() {
       <div className="mt-8">
         <h2 className="text-lg font-semibold mb-2">primitive array + SELF</h2>
         <ReactDndList
-          value={['apple', 'banana', 'cherry']}
+          value={fruits}
           keyExtractor={SELF}
           className="flex flex-col gap-1"
           classNames={{ item: 'p-2 bg-white rounded shadow text-sm' }}
-          onChange={(next) => console.log('primitive order:', next)}
+          onChange={setFruits}
           slots={{
             item: ({ item, dragHandleProps }) => (
               <>
