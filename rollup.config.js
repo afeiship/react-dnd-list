@@ -30,7 +30,8 @@ export default [
         'prop-types': 'PropTypes',
         'classnames': 'classNames',
         'react': 'React',
-        'react-dom': 'ReactDOM'
+        'react-dom': 'ReactDOM',
+        'tslib': 'tslib'
       }
     },
     plugins: [
@@ -57,6 +58,7 @@ export default [
       image(),
       typescript({
         tsconfig: 'tsconfig.build.json',
+        include: ['**/*.ts', '**/*.tsx'],
         clean: true
       }),
       commonjs()
