@@ -22,7 +22,6 @@ export default [
       sourcemap: true,
       name: 'ReactDndList',
       globals: {
-        '@jswork/noop': 'noop',
         '@jswork/react-list': 'ReactList',
         '@dnd-kit/core': 'DndKitCore',
         '@dnd-kit/sortable': 'DndKitSortable',

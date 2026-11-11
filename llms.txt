@@ -11,7 +11,7 @@ ReactDndList wraps `DndContext` + `SortableContext` (dnd-kit) around `@jswork/re
 - Package: `@jswork/react-dnd-list`
 - Main file: `src/components/index.tsx`; types: `src/components/types.ts`; entry: `src/main.ts`
 - Peer deps: `react >=18`, `react-dom >=18`
-- Dependencies: `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities`, `@jswork/react-list`, `classnames`, `@jswork/noop`
+- Dependencies: `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities`, `@jswork/react-list`, `classnames`
 - Re-exports `SELF` and `INDEX` from `@jswork/react-list` — do not make consumers install react-list separately
 - `keyExtractor` is shared by React keys and `SortableContext items`; ids must be unique
 - No `DragOverlay`; the row wrapper itself transforms while dragging
@@ -22,7 +22,7 @@ ReactDndList wraps `DndContext` + `SortableContext` (dnd-kit) around `@jswork/re
 ```ts
 interface ReactDndListProps<T> {
   value: T[];
-  onChange?: (next: T[], event: DragEndEvent) => void; // default noop
+  onChange?: (next: T[], event: DragEndEvent) => void; // optional
   keyExtractor?: KeyExtractor<T>;                      // default 'id'
   slots: {
     item: Slot<SortableItemContext<T>>;

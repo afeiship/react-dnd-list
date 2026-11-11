@@ -55,7 +55,7 @@ pnpm add @jswork/react-dnd-list
 | prop | type | default | desc |
 |---|---|---|---|
 | `value` | `T[]` | 必填 | 受控数据，组件不修改它 |
-| `onChange` | `(next: T[], event: DragEndEvent) => void` | `noop` | 拖拽完成后回传新顺序 |
+| `onChange` | `(next: T[], event: DragEndEvent) => void` | - | 拖拽完成后回传新顺序 |
 | `keyExtractor` | `KeyExtractor<T>` | `'id'` | 与 `@jswork/react-list` 完全一致，支持 `SELF` / `INDEX` / dot path / 函数 |
 | `slots.item` | `Slot<SortableItemContext<T>>` | 必填 | 每行内容；上下文含 `item` / `index` / `data` / `dragHandleProps` / `isDragging` |
 | `slots.empty` | `Slot<{ data: T[] }>` | - | 空状态 |

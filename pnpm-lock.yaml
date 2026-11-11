@@ -17,9 +17,6 @@ importers:
       '@dnd-kit/utilities':
         specifier: ^3.2.2
         version: 3.2.2(react@18.3.1)
-      '@jswork/noop':
-        specifier: ^1.0.0
-        version: 1.0.0
       '@jswork/react-list':
         specifier: ^2.0.18
         version: 2.0.18

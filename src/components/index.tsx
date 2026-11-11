@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import cx from 'classnames';
-import noop from '@jswork/noop';
 import {
   closestCenter,
   DndContext,
@@ -168,7 +167,7 @@ function ReactDndList<T>(props: ReactDndListProps<T>) {
     userOnDragEnd?.(event);
     if (disabled || !event.over) return;
     const next = reorder(value, ids, event.active.id, event.over.id);
-    if (next) (onChange ?? noop)(next, event);
+    if (next) onChange?.(next, event);
   };
 
   const itemSlot: Slot<SortableItemContext<T>> = (ctx) => (
