@@ -1,43 +1,14 @@
-import noop from '@jswork/noop';
-import classNames from 'classnames';
-import React, { Component, HTMLAttributes } from 'react';
+import { arrayMove } from '@dnd-kit/sortable';
+import type { UniqueIdentifier } from '@dnd-kit/core';
 
-const CLASS_NAME = 'react-dnd-list';
-const VERSION = '__VERSION__';
-
-export type ReactDndListProps = {
-  /**
-   * Additional CSS class names to apply to the component.
-   */
-  className?: string;
-  /**
-   * Default value.
-   */
-  value?: any;
-  /**
-   * The change handler.
-   */
-  onChange?: Function;
-} & HTMLAttributes<HTMLDivElement>;
-
-export default class ReactDndList extends Component<ReactDndListProps> {
-  static displayName = CLASS_NAME;
-  static version = VERSION;
-  static defaultProps = { onChange: noop };
-
-  handleClick = () => {
-    console.log('click me!');
-  };
-
-  render() {
-    const { className, value, onChange, ...rest } = this.props;
-
-    return (
-      <div data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)}{...rest}>
-        <button onClick={this.handleClick}>
-          Enjoy coding~
-        </button>
-      </div>
-    );
-  }
+export function reorder<T>(
+  value: T[],
+  ids: UniqueIdentifier[],
+  activeId: UniqueIdentifier,
+  overId: UniqueIdentifier
+): T[] | null {
+  const from = ids.indexOf(activeId);
+  const to = ids.indexOf(overId);
+  if (from < 0 || to < 0 || from === to) return null;
+  return arrayMove(value, from, to);
 }
