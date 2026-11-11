@@ -8,9 +8,21 @@ importers:
 
   .:
     dependencies:
+      '@dnd-kit/core':
+        specifier: ^6.3.1
+        version: 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/sortable':
+        specifier: ^10.0.0
+        version: 10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities':
+        specifier: ^3.2.2
+        version: 3.2.2(react@18.3.1)
       '@jswork/noop':
         specifier: ^1.0.0
         version: 1.0.0
+      '@jswork/react-list':
+        specifier: ^2.0.18
+        version: 2.0.18
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -776,6 +788,28 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
+  '@dnd-kit/accessibility@3.1.1':
+    resolution: {integrity: sha512-2P+YgaXF+gRsIihwwY1gCsQSYnu9Zyj2py8kY5fFvUM1qm2WA2u639R6YNVfU4GWr+ZM5mqEsfHZZLoRONbemw==}
+    peerDependencies:
+      react: '>=16.8.0'
+
+  '@dnd-kit/core@6.3.1':
+    resolution: {integrity: sha512-xkGBRQQab4RLwgXxoqETICr6S5JlogafbhNsidmrkVv2YRs5MLwpjoF2qpiGjQt8S9AoxtIV603s0GIUpY5eYQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
+  '@dnd-kit/sortable@10.0.0':
+    resolution: {integrity: sha512-+xqhmIIzvAYMGfBYYnbKuNicfSsk4RksY2XdmJhT+HAC01nix6fHCztU68jooFiMUB01Ky3F0FyOvhG/BZrWkg==}
+    peerDependencies:
+      '@dnd-kit/core': ^6.3.0
+      react: '>=16.8.0'
+
+  '@dnd-kit/utilities@3.2.2':
+    resolution: {integrity: sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==}
+    peerDependencies:
+      react: '>=16.8.0'
+
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
     engines: {node: '>=12'}
@@ -1002,6 +1036,9 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@jswork/class-imperative-handle@1.0.1':
+    resolution: {integrity: sha512-Wqc5I+EWgC2OPeStj91vVzQlBVRgrnMzZsrC4+OemTnLcnV56Og7oeupubRupTGtJNIPDO47+InbpuLMvAlcoA==}
+
   '@jswork/next-array-replace@1.0.0':
     resolution: {integrity: sha512-PUaWL9HQjldWOo5M3zBszDV9RVxqG+laSwlpZfdQJLDfhg/hfcQ7uKX4QtzlbvVz+yeSPahXj4aI8HILCXJ4dA==}
 
@@ -1022,6 +1059,9 @@ packages:
 
   '@jswork/presets-tailwind@1.2.37':
     resolution: {integrity: sha512-DQ+39NkekCaJok+bnlrWlWKVW6o+qVPXM5pKY9d6A1YRvmAfTzsT7SCeu+P5a4SRJ6+aSQtC77aqQMbw9WJHrw==}
+
+  '@jswork/react-list@2.0.18':
+    resolution: {integrity: sha512-ZSZ66u2c0pfkdNG+ecBH3sUXBNm43tAP3U72lRppwQLGnlbUNRBBFRICZVWylQ0q4VpEVkiGJKh+J34MX3JkXQ==}
 
   '@jswork/react-markdown-props@1.0.1':
     resolution: {integrity: sha512-Y+0ULp1IuDujWhR+8iB3JbOlRqOz83CekPM1VqGOhi4G2FPgYG4iVggI8eg46PAF0eElCzIUdI0JIaNsKaMWRg==}
@@ -8425,6 +8465,31 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
+  '@dnd-kit/accessibility@3.1.1(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      tslib: 2.9.1
+
+  '@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/accessibility': 3.1.1(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tslib: 2.9.1
+
+  '@dnd-kit/sortable@10.0.0(@dnd-kit/core@6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@dnd-kit/core': 6.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
+      react: 18.3.1
+      tslib: 2.9.1
+
+  '@dnd-kit/utilities@3.2.2(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      tslib: 2.9.1
+
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
 
@@ -8680,6 +8745,8 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
+  '@jswork/class-imperative-handle@1.0.1': {}
+
   '@jswork/next-array-replace@1.0.0': {}
 
   '@jswork/next-nice-comments@1.0.12': {}
@@ -8710,6 +8777,12 @@ snapshots:
       '@jswork/tailwind-padding': 1.0.2
       '@jswork/tailwind-shortcuts': 1.0.38
       '@jswork/tailwind-width': 1.0.7
+
+  '@jswork/react-list@2.0.18':
+    dependencies:
+      '@jswork/class-imperative-handle': 1.0.1
+      '@jswork/noop': 1.0.0
+      classnames: 2.5.1
 
   '@jswork/react-markdown-props@1.0.1':
     dependencies:

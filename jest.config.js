@@ -6,6 +6,7 @@ export default {
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
   },
+  transformIgnorePatterns: ['/node_modules/(?!@jswork/react-list)'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   }

@@ -23,6 +23,10 @@ export default [
       name: 'ReactDndList',
       globals: {
         '@jswork/noop': 'noop',
+        '@jswork/react-list': 'ReactList',
+        '@dnd-kit/core': 'DndKitCore',
+        '@dnd-kit/sortable': 'DndKitSortable',
+        '@dnd-kit/utilities': 'DndKitUtilities',
         'prop-types': 'PropTypes',
         'classnames': 'classNames',
         'react': 'React',
