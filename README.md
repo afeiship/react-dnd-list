@@ -1,50 +1,56 @@
-# rails-module-cookie
-> Rails module for cookie login with auth token.
+# react-dnd-list
+> A lightweight, accessible draggable list component built with dnd-kit.
 
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
 
-## Step by step:
-+ New project & Generate controller & Generate model:
-```bash
-## new proejct:
-rails new .
-
-## generate controller && model:
-rails g controller pages welcome
-rails g controller users new create login
-rails g model User username:string email:string password_digest:string
-
-## create db:
-rake db:create db:migrate
+## installation
+```shell
+npm install -S @jswork/react-dnd-list
 ```
 
-+ use `bcrypt` libray:
-```ruby
-gem 'bcrypt', '~> 3.1.7'
-```
+## usage
+1. import css
+  ```scss
+  @import "~@jswork/react-dnd-list/dist/style.css";
 
-+ add routes:
-```ruby
-  get 'users/new'
+  // or use sass
+  @import "~@jswork/react-dnd-list/dist/style.scss";
 
-  get 'users/create'
+  // customize your styles:
+  $react-dnd-list-options: ()
+  ```
+2. import js
+  ```js
+  import React from 'react';
+  import ReactDndList from '@jswork/react-dnd-list';
 
-  get 'users/login'
+  export default () => {
+    return (
+      <div className="p-5 border w-4/5 mx-auto mt-10 bg-gray-100 rounded-md hover:bg-gray-200">
+        <ReactDndList className="debug-red inline-block p-1" />
+      </div>
+    );
+  };
 
-  root :to => 'pages#welcome' 
-```
+  ```
 
+## preview
+- https://afeiship.github.io/react-dnd-list/
 
-+ add auth_token to Users table;
-```bash
-rails g migration AddAuthTokenToUsers auth_token:string
-rake db:create db:migrate
-```
+## license
+Code released under [the MIT license](https://github.com/afeiship/react-dnd-list/blob/master/LICENSE.txt).
 
-+ register a new user:
-```conf
-user:afei
-password:afei@123.com
-```
+[version-image]: https://img.shields.io/npm/v/@jswork/react-dnd-list
+[version-url]: https://npmjs.org/package/@jswork/react-dnd-list
 
-## Attention:
-+ DON't OPEN Crossdomain plugin,OR you will GET SOME ERROR!!!!
+[license-image]: https://img.shields.io/npm/l/@jswork/react-dnd-list
+[license-url]: https://github.com/afeiship/react-dnd-list/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-dnd-list
+[size-url]: https://github.com/afeiship/react-dnd-list/blob/master/dist/react-dnd-list.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/react-dnd-list
+[download-url]: https://www.npmjs.com/package/@jswork/react-dnd-list
