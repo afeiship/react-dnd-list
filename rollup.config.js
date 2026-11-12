@@ -17,21 +17,9 @@ export default [
     input: 'src/main.ts',
     output: {
       file: pkg.main,
-      format: 'umd',
+      format: 'esm',
       exports: 'named',
-      sourcemap: true,
-      name: 'ReactDndList',
-      globals: {
-        '@jswork/react-list': 'ReactList',
-        '@dnd-kit/core': 'DndKitCore',
-        '@dnd-kit/sortable': 'DndKitSortable',
-        '@dnd-kit/utilities': 'DndKitUtilities',
-        'prop-types': 'PropTypes',
-        'classnames': 'classNames',
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'tslib': 'tslib'
-      }
+      sourcemap: true
     },
     plugins: [
       // external(),
