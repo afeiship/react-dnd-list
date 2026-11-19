@@ -1,46 +1,28 @@
-# react-component-mono-lib
-> A react component library template for monorepo.
+# react-dnd-list
+> A lightweight, accessible draggable list component built with dnd-kit.
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
-[![size][size-image]][size-url]
 [![download][download-image]][download-url]
 
 ## installation
 ```shell
-npm install -S @jswork/react-component-mono-lib
+pnpm add @jswork/react-dnd-list
 ```
 
 ## usage
-1. import css
-  ```scss
-  @import "~@jswork/react-component-mono-lib/dist/style.css";
-
-  // or use sass
-  @import "~@jswork/react-component-mono-lib/dist/style.scss";
-
-  // customize your styles:
-  $react-component-mono-lib-options: ()
-  ```
-2. import js
   ```js
 __GENERATE_DAPP__
   ```
 
-## preview
-- https://afeiship.github.io/react-component-mono-lib/
-
 ## license
-Code released under [the MIT license](https://github.com/afeiship/react-component-mono-lib/blob/master/LICENSE.txt).
+Code released under [the MIT license](https://github.com/afeiship/react-dnd-list/blob/main/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@jswork/react-component-mono-lib
-[version-url]: https://npmjs.org/package/@jswork/react-component-mono-lib
+[version-image]: https://img.shields.io/npm/v/@jswork/react-dnd-list
+[version-url]: https://npmjs.org/package/@jswork/react-dnd-list
 
-[license-image]: https://img.shields.io/npm/l/@jswork/react-component-mono-lib
-[license-url]: https://github.com/afeiship/react-component-mono-lib/blob/master/LICENSE.txt
+[license-image]: https://img.shields.io/npm/l/@jswork/react-dnd-list
+[license-url]: https://github.com/afeiship/react-dnd-list/blob/main/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-component-mono-lib
-[size-url]: https://github.com/afeiship/react-component-mono-lib/blob/master/dist/react-component-mono-lib.min.js
-
-[download-image]: https://img.shields.io/npm/dm/@jswork/react-component-mono-lib
-[download-url]: https://www.npmjs.com/package/@jswork/react-component-mono-lib
+[download-image]: https://img.shields.io/npm/dm/@jswork/react-dnd-list
+[download-url]: https://www.npmjs.com/package/@jswork/react-dnd-list

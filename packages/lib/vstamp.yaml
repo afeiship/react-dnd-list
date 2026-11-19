@@ -1,0 +1,9 @@
+# vstamp config. Paths relative to this file.
+# Source of truth: lib package version, bumped via release-it.
+# Usage: vst show | vst check | vst sync --dry-run | vst sync
+
+source: package.json
+
+targets:
+  - file: src/index.tsx
+    pattern: '(static version = )([0-9]+[.][0-9]+[.][0-9]+)'

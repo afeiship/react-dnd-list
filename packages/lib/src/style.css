@@ -1,0 +1,9 @@
+.react-dnd-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.react-dnd-list__item {
+  position: relative;
+  touch-action: none;
+}
